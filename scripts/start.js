@@ -150,7 +150,9 @@ checkBrowsers(paths.appPath, isInteractive)
 
       console.log(chalk.cyan('Starting the development server...\n'));
       openBrowser(urls.localUrlForBrowser);
-      server.listen();
+      server.listen({
+        onUnhandledRequest: 'warn',
+      });
     });
 
     ['SIGINT', 'SIGTERM'].forEach(function (sig) {
